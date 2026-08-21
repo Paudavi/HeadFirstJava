@@ -1,11 +1,28 @@
 package NewDotCom;
 
-public class DotComBust {
-    private DotCom[] dotComs = new DotCom[2];
+import java.util.ArrayList;
 
-   public DotComBust(){
-        dotComs[0].setName("Paula");
-        dotComs[1].setName("Davila");
-        dotComs[2].setName("Radcenco");
-    }
+public class DotComBust {
+    private ArrayList<DotCom> dotComs;
+    private GameHelper gameHelper = new GameHelper();
+    private int numbGuesses = 0;
+
+   public void setUpGame(){
+    dotComs.add(new DotCom("Bubble.com"));
+    dotComs.add(new DotCom("Air.com"));
+    dotComs.add(new DotCom("Fire.com"));
+    System.out.println("Play the game");
+   }
+
+   public void startPlaying(){
+
+   }
+
+   public void  checkUserGuesses(){
+
+   }
+
+   public void finishGame(){
+
+   }
 }
