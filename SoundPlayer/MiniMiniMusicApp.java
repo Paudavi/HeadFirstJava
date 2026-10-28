@@ -27,7 +27,7 @@ public class MiniMiniMusicApp {
 
             ShortMessage msg2 = new ShortMessage();
             msg2.setMessage(NOTE_OFF,1,44,100);
-            MidiEvent noteOff = new MidiEvent(msg2, 16);
+            MidiEvent noteOff = new MidiEvent(msg2, 30);
             track.add(noteOff);
 
             player.setSequence(seq);
