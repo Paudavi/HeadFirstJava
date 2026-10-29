@@ -7,10 +7,15 @@ public class MiniMiniMusicApp {
   
     public static void main(String[] args) {
         MiniMiniMusicApp mini = new MiniMiniMusicApp();
-        mini.play();
+        if (args.length<2) System.out.println("Don't forget the instrument and note args");
+        else {
+            int instrument = Integer.parseInt(args[0]);
+            int note = Integer.parseInt(args[1]);
+            mini.play(instrument,note);
+        }
     }
     
-    public void play(){
+    public void play(int instrument, int note){
         try{
             Sequencer player = MidiSystem.getSequencer();
             player.open();
@@ -19,15 +24,19 @@ public class MiniMiniMusicApp {
 
             Track track = seq.createTrack();
 
-
             ShortMessage msg1 = new ShortMessage();
-            msg1.setMessage(NOTE_ON,1,44,100);
-            MidiEvent noteOn = new MidiEvent(msg1, 1);
-            track.add(noteOn);
+            msg1.setMessage(PROGRAM_CHANGE,1,instrument,0);
+            MidiEvent changeInstrument = new MidiEvent(msg1, 1);
+            track.add(changeInstrument);
 
             ShortMessage msg2 = new ShortMessage();
-            msg2.setMessage(NOTE_OFF,1,44,100);
-            MidiEvent noteOff = new MidiEvent(msg2, 30);
+            msg2.setMessage(NOTE_ON,1,note,100);
+            MidiEvent noteOn = new MidiEvent(msg2, 1);
+            track.add(noteOn);
+
+            ShortMessage msg3 = new ShortMessage();
+            msg3.setMessage(NOTE_OFF,1,note,100);
+            MidiEvent noteOff = new MidiEvent(msg3, 16);
             track.add(noteOff);
 
             player.setSequence(seq);
