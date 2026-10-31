@@ -2,8 +2,6 @@ package GUI;
 
 import javax.swing.*;
 
-import SoundPlayer.MyDrawPanel;
-
 import java.awt.*;
 import java.util.concurrent.TimeUnit;
 
@@ -41,6 +39,9 @@ public class SimpleAnimation {
 
     class MyDrawPanel extends JPanel {
         public void paintComponent(Graphics g){
+            g.setColor(Color.white);
+            g.fillRect(0, 0, this.getWidth(), this.getHeight());
+
             g.setColor(Color.green);
             g.fillOval(xPos, yPos, 40, 40);
         }
